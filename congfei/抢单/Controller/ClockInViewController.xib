@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 7 format" minToolsVersion="7.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ClockInViewController">
+            <connections>
+                <outlet property="customView" destination="XTT-h2-uJV" id="uoj-qu-KxB"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vZR-B0-ueE">
+                    <rect key="frame" x="0.0" y="74" width="320" height="390"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您也进入金碧辉煌打卡考勤区域，可以正常打卡" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j29-W2-OET">
+                            <rect key="frame" x="0.0" y="40" width="320" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="5Lm-PW-YHx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1016-01-01 10:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg9-tS-3lY">
+                            <rect key="frame" x="0.0" y="90" width="320" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="Mw4-pk-9LZ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XTT-h2-uJV">
+                            <rect key="frame" x="65" y="160" width="190" height="190"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="190" id="35a-xS-EdM"/>
+                                <constraint firstAttribute="width" constant="190" id="FVm-xc-PPM"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="j29-W2-OET" firstAttribute="leading" secondItem="vZR-B0-ueE" secondAttribute="leading" id="9sY-aP-HTv"/>
+                        <constraint firstItem="XTT-h2-uJV" firstAttribute="centerX" secondItem="vZR-B0-ueE" secondAttribute="centerX" id="HTh-aE-bpF"/>
+                        <constraint firstAttribute="trailing" secondItem="Mg9-tS-3lY" secondAttribute="trailing" id="Nt2-ei-uIu"/>
+                        <constraint firstItem="XTT-h2-uJV" firstAttribute="top" secondItem="Mg9-tS-3lY" secondAttribute="bottom" constant="50" id="O8l-D4-v1c"/>
+                        <constraint firstAttribute="trailing" secondItem="j29-W2-OET" secondAttribute="trailing" id="d5w-Jw-0a5"/>
+                        <constraint firstItem="Mg9-tS-3lY" firstAttribute="top" secondItem="j29-W2-OET" secondAttribute="bottom" constant="10" id="gfR-1R-bj3"/>
+                        <constraint firstAttribute="height" constant="390" id="lRK-Dz-JQM"/>
+                        <constraint firstItem="Mg9-tS-3lY" firstAttribute="leading" secondItem="vZR-B0-ueE" secondAttribute="leading" id="n4p-de-emG"/>
+                        <constraint firstItem="j29-W2-OET" firstAttribute="top" secondItem="vZR-B0-ueE" secondAttribute="top" constant="40" id="wKG-fX-OQY"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.94901960784313721" green="0.96470588235294119" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vZR-B0-ueE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dPV-w0-rcx"/>
+                <constraint firstAttribute="trailing" secondItem="vZR-B0-ueE" secondAttribute="trailing" id="dWj-tL-T34"/>
+                <constraint firstItem="vZR-B0-ueE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="esx-H0-agE"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <point key="canvasLocation" x="24" y="53"/>
+        </view>
+    </objects>
+</document>
