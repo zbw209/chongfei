@@ -24,6 +24,7 @@
 #define kDefaulWorkPlace    @"/saas/workplace/getDefaultWorkplace"   //获取默认工作场所
 #define kAddWorkPlace       @"/saas/workplace/addWorkplace" //新增工作场所
 #define kEditWorkPlace      @"/saas/workplace/deleteWorkplace" //修改工作场所
+#define kAllWorkPlace       @"/saas/workplace/findMyWorkplace" //获取所有的工作场所
 
 #define kClockin            @"/saas/punchclock/punchin"       //上台打开
 #define kFindPassWordCode   @"/saas/pw/send_find_code"        //找回密码验证码
