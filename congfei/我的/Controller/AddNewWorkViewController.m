@@ -24,9 +24,9 @@
 
 @property (nonatomic, strong) NSString *companyName;
 @property (nonatomic, strong) NSString *serviceIncome;
-@property (nonatomic, strong) NSString *leaderName;
-@property (nonatomic, strong) NSString *leaderPhone;
-@property (nonatomic, strong) NSString *myNumber;
+@property (nonatomic, strong) NSString *supperName;
+@property (nonatomic, strong) NSString *supperTel;
+@property (nonatomic, strong) NSString *workNum;
 
 @end
 
@@ -49,17 +49,32 @@
     newWorkHeader.tag = 101;
     [newWorkHeader.companyBtn addTarget:self action:@selector(handleChoseCompany) forControlEvents:UIControlEventTouchUpInside];
     self.tableView.tableHeaderView = newWorkHeader;
-    // Do any additional setup after loading the view.
     
      self.companyAry = @[@"金碧辉煌1111",@"金碧辉煌2222",@"金碧辉煌3333",@"金碧辉煌4444",@"金碧辉煌5555",@"金碧辉煌6666"];
+    [self getData];
 }
 
+/*
+ {
+ "id": 0,
+ "auserId": 0,
+ "workplaceId": 0,
+ "workNum": "string",
+ "serviceFee": 0,
+ "supperName": "string",
+ "supperTel": "string",
+ "creator": "string",
+ "gmtCreate": "2016-12-15T03:01:36.857Z",
+ "modifier": "string",
+ "gmtModified": "2016-12-15T03:01:36.857Z",
+ "default": true
+ }
+ */
 - (void)saveButtonPressed:(UIBarButtonItem *)barItem {
-    
-    
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",kMainURL,kAddWorkPlace];
     
-    NSDictionary *dict = @{};
+    NSDictionary *dict = @{@"token" : [SkUser sharedInstance].userToken,
+                           @"body" : @{}};
     [[HttpRequest sharedInstance]postWithURLString:urlStr parameters:dict success:^(id responseObject) {
         
     } failure:^(NSError *error) {
@@ -184,19 +199,15 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)getData {
+    NSString *allWorkPlaceUrlStr = [NSString stringWithFormat:@"%@%@",kMainURL,kDefaulWorkPlace];
+    NSDictionary *dict = @{@"token" : [SkUser sharedInstance].userToken};
+    
+    [[HttpRequest sharedInstance]postWithURLString:allWorkPlaceUrlStr parameters:dict success:^(id responseObject) {
+       NSLog(@"%s,%d responseObject = %@",__FUNCTION__,__LINE__,responseObject);
+    } failure:^(NSError *error) {
+        NSLog(@"%s,%d error = %@",__FUNCTION__,__LINE__,error);
+    }];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

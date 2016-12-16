@@ -9,9 +9,12 @@
 #import "MyWorkViewController.h"
 #import "MyWorkTableViewCell.h"
 #import "AddNewWorkViewController.h"
+
+#import "WorkPlaceModel.h"
+
 @interface MyWorkViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
-
+@property (nonatomic, strong) NSArray *sourceArray;
 @end
 
 static NSString *identifier = @"MyWorkTableViewCell";
@@ -39,13 +42,39 @@ static NSString *identifier = @"MyWorkTableViewCell";
     [footBtn addTarget:self action:@selector(handleAddWork) forControlEvents:UIControlEventTouchUpInside];
     [footBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:footBtn];
-    
-    // Do any additional setup after loading the view.
+
+    self.sourceArray = [NSArray new];
+    [self getData];
 }
+
+#pragma mark - Actions 
+- (void)getData {
+    NSString *allWorkPlaceUrlStr = [NSString stringWithFormat:@"%@%@",kMainURL,kAllWorkPlace];
+    NSDictionary *dict = @{@"token" : [SkUser sharedInstance].userToken};
+    
+    [[HttpRequest sharedInstance] getWithURLString:allWorkPlaceUrlStr
+                                        parameters:dict
+                                           success:^(id responseObject)
+     {
+         NSLog(@"%s,%d responseObject = %@",__FUNCTION__,__LINE__,responseObject);
+         self.sourceArray = [WorkPlaceModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+         
+     } failure:^(NSError *error) {
+         NSLog(@"%s,%d error = %@",__FUNCTION__,__LINE__,error);
+     }];
+}
+
+- (void)handleAddWork {
+    AddNewWorkViewController *addVC = [[AddNewWorkViewController alloc] init];
+    [self.navigationController pushViewController:addVC animated:YES];
+}
+
+#pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return 120;
 }
+
 //- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
 //    return 81;
 //}
@@ -55,6 +84,7 @@ static NSString *identifier = @"MyWorkTableViewCell";
     return 4;
 }
 
+#pragma mark - UITableViewDataSource
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MyWorkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
    
@@ -64,24 +94,5 @@ static NSString *identifier = @"MyWorkTableViewCell";
     
     return cell;
 }
-
-- (void)handleAddWork {
-    AddNewWorkViewController *addVC = [[AddNewWorkViewController alloc] init];
-    [self.navigationController pushViewController:addVC animated:YES];
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

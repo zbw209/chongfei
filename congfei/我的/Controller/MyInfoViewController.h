@@ -2,7 +2,7 @@
 //  MyInfoViewController.h
 //  congfei
 //
-//  Created by 周必稳 on 2016/12/15.
+//  Created by 陈高磊 on 2016/12/15.
 //  Copyright © 2016年 apple. All rights reserved.
 //
 

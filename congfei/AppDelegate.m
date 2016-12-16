@@ -91,7 +91,7 @@
 {
     
     
-    if ( [SkUserDefaults readSet] ) {
+    if ( [SkUserDefaults readSet]) {
         [[SkSet sharedInstance] copyWithOtherObject: [SkUserDefaults readSet] ];
     }
     if ( [SkUserDefaults readUser] ) {
